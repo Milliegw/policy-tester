@@ -208,7 +208,7 @@ function App() {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div>
             <h1 className="text-2xl font-bold">Policy Tester Interface</h1>
-            <p className="text-blue-100 mt-1">Test draft parole policies against lived experience scenarios</p>
+            <p className="text-blue-100 mt-1">Test draft policies and guidelines against lived experience scenarios</p>
           </div>
           <div className="flex items-center gap-3">
             <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-sm ${ollamaConnected ? 'bg-green-500/20 text-green-100' : 'bg-red-500/20 text-red-100'}`}>

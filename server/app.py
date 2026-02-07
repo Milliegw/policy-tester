@@ -3,6 +3,10 @@ Policy Tester Backend — FastAPI server that handles Ollama AI analysis.
 
 All personas, prompt engineering, and Ollama integration live here in Python.
 The React frontend just sends the policy text + selected categories and displays results.
+
+The included personas cover parole policy as a worked example, but the tool is
+designed to test any government policy or guidelines — swap in different personas
+and example policies for other domains.
 """
 
 import json
@@ -14,10 +18,12 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 
 # ============================================================
-# PERSONAS - Lived experience scenarios for parole decision-making
+# PERSONAS - Lived experience scenarios for policy testing
 # ============================================================
-# These represent real challenges people face during the parole process.
-# Each persona has a scenario and specific policy challenges derived from it.
+# These represent real challenges people face when interacting with government
+# systems. Each persona has a scenario and specific policy challenges derived
+# from it. The included set covers parole policy as a worked example — replace
+# or extend them for other policy domains.
 
 PERSONAS = {
     "housing": {
@@ -185,12 +191,12 @@ def build_prompt(policy_text: str, categories: list[str]) -> tuple[str, str]:
     )
 
     system_prompt = (
-        "You are a policy analyst testing draft Parole Board policies against lived "
-        "experience scenarios from people going through the parole process.\n\n"
+        "You are a policy analyst testing draft government policies and guidelines "
+        "against lived experience scenarios from people who will be affected by them.\n\n"
         "Your role is to identify:\n"
         "- CONFLICTS: Where policy requirements create impossible situations or clash with real-world constraints\n"
         "- GAPS: What the policy doesn't address but needs to\n"
-        "- UNINTENDED_CONSEQUENCES: How the policy might create barriers to fair parole assessment\n"
+        "- UNINTENDED_CONSEQUENCES: How the policy might create barriers or cause harm to the people affected\n"
         "- STRENGTHS: Where the policy aligns well with needs and fair process\n\n"
         "Be specific, cite the persona scenarios, and provide actionable recommendations.\n"
         "You MUST respond with ONLY valid JSON, no other text."
@@ -198,8 +204,8 @@ def build_prompt(policy_text: str, categories: list[str]) -> tuple[str, str]:
 
     user_prompt = (
         f"Policy to test:\n{policy_text}\n\n"
-        f"Test this policy against these parole applicant scenarios:\n\n{personas_text}\n\n"
-        "Analyze how this policy would impact each person's parole application or hearing. "
+        f"Test this policy against these lived experience scenarios:\n\n{personas_text}\n\n"
+        "Analyze how this policy would impact each person. "
         "For each persona, identify any conflicts, gaps, unintended consequences, or strengths.\n\n"
         'Respond with ONLY this JSON format, no other text:\n'
         '{\n'

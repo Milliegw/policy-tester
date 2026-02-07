@@ -14,8 +14,8 @@ This project was built at the Justice AI Hackathon 2026.
 
 We welcome contributions! Here are some ways you can help:
 
-- **Add personas** — new lived experience scenarios that surface different policy blind spots (see `server/app.py`)
-- **Add example policies** — draft policies for users to test against (see `server/app.py`)
+- **Add personas** — new lived experience scenarios for any policy domain (see `server/app.py`)
+- **Add example policies** — draft policies from any area of government for users to test against (see `server/app.py`)
 - **Improve prompts** — refine the system/user prompts for better analysis quality (see `build_prompt()` in `server/app.py`)
 - **UI improvements** — accessibility, mobile responsiveness, report export
 - **Documentation** — clearer setup guides, usage examples, screenshots

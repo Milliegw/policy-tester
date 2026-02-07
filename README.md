@@ -1,27 +1,31 @@
 # Policy Tester Interface
 
-An AI-powered tool to red-team draft parole policies against lived experience personas. Built at the Justice AI Hackathon 2026.
+An AI-powered tool that red-teams draft government policies and guidelines against lived experience personas. Paste any policy — housing, benefits, healthcare, justice, education, immigration — and the tool surfaces conflicts, gaps, and unintended consequences before real people are affected.
+
+Built at the Justice AI Hackathon 2026.
 
 > **All AI processing runs locally via [Ollama](https://ollama.com/) — no data leaves your machine.**
 
 ## What it does
 
-This tool tests draft policy documents against realistic scenarios representing people going through the parole process. It uses a local LLM to identify:
+You give the tool a draft policy document and a set of personas representing people who will be affected by it. A local LLM analyses the policy through each persona's lens and returns structured findings:
 
 - **Conflicts** — where policy requirements create impossible situations
 - **Gaps** — what the policy doesn't address but needs to
-- **Unintended consequences** — how the policy might create barriers to fair assessment
-- **Strengths** — where the policy aligns well with needs
+- **Unintended consequences** — how the policy might create barriers or harm
+- **Strengths** — where the policy aligns well with people's real needs
 
 ## Why it matters
 
-Policies are often drafted without input from people who will be affected by them. This tool embeds lived experience perspectives into the policy review process, surfacing unintended consequences before policies are implemented.
+Policies are often drafted without input from the people who will be affected by them. This tool embeds lived experience perspectives into the review process, surfacing unintended consequences before policies are implemented.
 
-For example, a standard curfew policy (7pm–7am) might seem reasonable, but when tested against Dev's scenario (a shift worker whose job requires rotating hours), the tool identifies that this policy forces people to choose between employment and compliance — exactly the kind of barrier that increases reoffending risk.
+For example, a standard curfew condition (7pm–7am) might seem reasonable, but when tested against a shift worker's scenario, the tool identifies that it forces people to choose between employment and compliance — exactly the kind of barrier that leads to worse outcomes.
 
-## The personas
+The tool ships with **parole policy personas** as a worked example, but the approach works for any domain where policy interacts with people's lives.
 
-The tool includes four personas representing different challenges:
+## Included example: parole policy personas
+
+The tool ships with four personas representing different challenges faced during the parole process. These serve as a ready-to-use demonstration and can be replaced or extended for any policy domain.
 
 | Persona | Category | Key Challenge |
 |---------|----------|---------------|
@@ -31,6 +35,17 @@ The tool includes four personas representing different challenges:
 | Jamal | Multiple Barriers | ADHD + literacy difficulties; struggles to evidence progress |
 
 These are fictional composites inspired by documented systemic barriers — not real individuals.
+
+### Adapting to other policy domains
+
+To test a different kind of policy, replace the personas and example policies in `server/app.py`. For instance:
+
+- **Benefits policy** — personas representing carers, people with fluctuating conditions, gig workers
+- **Healthcare access** — personas representing rural residents, non-English speakers, shift workers
+- **Education** — personas representing mature students, parents, people with disabilities
+- **Immigration** — personas representing asylum seekers, visa workers, undocumented individuals
+
+The prompt engineering in `build_prompt()` is domain-agnostic — it will adapt its analysis to whatever personas and policy text you provide.
 
 ---
 
@@ -48,8 +63,8 @@ These are fictional composites inspired by documented systemic barriers — not 
 
 ```bash
 # Clone the repo
-git clone https://github.com/YOUR_USERNAME/parole-policy-tester.git
-cd parole-policy-tester
+git clone https://github.com/Milliegw/policy-tester.git
+cd policy-tester
 
 # Frontend
 npm install
@@ -135,10 +150,12 @@ The header shows a green "Ollama" badge when everything is connected. If it show
 **1. Persona structure** (`server/app.py`)
 - Each persona has: id, name, category, scenario text, and derived challenge questions
 - Scenarios are detailed enough to surface specific policy conflicts
+- Personas are domain-agnostic — swap them out for any policy area
 
 **2. Prompt engineering** (`server/app.py` — `build_prompt()`)
 - System prompt sets the model's role as a policy analyst
 - User prompt combines policy text with formatted persona scenarios
+- The prompt adapts to whatever persona content is provided
 - Output is structured as JSON for reliable parsing
 
 **3. API integration** (`server/app.py` — `call_ollama()`)
@@ -149,7 +166,7 @@ The header shows a green "Ollama" badge when everything is connected. If it show
 ## Project structure
 
 ```
-parole-policy-tester/
+policy-tester/
 ├── src/
 │   ├── App.jsx          # React UI — fetches data from Python backend
 │   ├── main.jsx         # React entry point
@@ -162,6 +179,8 @@ parole-policy-tester/
 ├── vite.config.js       # Vite config with /api proxy to Python backend
 ├── tailwind.config.js   # Tailwind configuration
 ├── postcss.config.js    # PostCSS configuration
+├── SECURITY.md          # Security policy
+├── CONTRIBUTORS.md      # Contributors list
 └── README.md            # This file
 ```
 
@@ -175,11 +194,12 @@ parole-policy-tester/
 
 ## Potential extensions
 
+- **More policy domains**: Add persona sets for benefits, healthcare, education, immigration
 - **Larger models**: Use a more capable Ollama model for better analysis (e.g. `llama3:70b`, `mixtral`)
-- **More personas**: Add scenarios for mental health, family ties, immigration status
 - **Policy database**: Save and compare policy versions over time
 - **User group validation**: Let affected communities validate and refine personas
 - **Export reports**: Generate PDF reports for policy teams
+- **Persona editor**: Let users create and save custom personas in the UI
 
 ## Built with
 
@@ -192,12 +212,14 @@ parole-policy-tester/
 
 ## Hackathon context
 
-This was built at the Justice AI Hackathon 2026, exploring how AI can improve policy-making by embedding perspectives that are often excluded from the process. The parole system was chosen because:
+This was built at the Justice AI Hackathon 2026, exploring how AI can improve policy-making by embedding perspectives that are often excluded from the process. The parole system was chosen as the initial worked example because:
 
 1. Policies directly affect people's liberty
 2. Those affected rarely have input into policy design
 3. Unintended consequences can increase reoffending risk
 4. Small policy changes can have large real-world impacts
+
+The same approach applies to any area of government policy where the people affected have limited voice in the drafting process.
 
 ## Contributing
 

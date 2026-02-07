@@ -2,7 +2,9 @@
 
 ## Project Overview
 
-This is the **Policy Tester Interface** — an AI-powered tool that red-teams draft parole policies against lived experience personas. It uses a local [Ollama](https://ollama.com/) instance for AI analysis. Built for the Justice AI Hackathon 2026.
+This is the **Policy Tester Interface** — an AI-powered tool that red-teams draft government policies and guidelines against lived experience personas. It uses a local [Ollama](https://ollama.com/) instance for AI analysis. Built for the Justice AI Hackathon 2026.
+
+The tool is domain-agnostic: it ships with parole policy personas as a worked example, but can test any policy area by swapping in different personas and example policies in `server/app.py`.
 
 ## Tech Stack
 
@@ -77,3 +79,11 @@ npm run dev                                               # terminal 3 — opens
 - New **API endpoints** go in `server/app.py`
 - New **UI components** go in `src/` as `.jsx` files
 - The Ollama model is selectable via the settings panel in the header
+
+## Security
+
+- **All processing is local** — no data leaves the machine. See `SECURITY.md` for full details.
+- **Never add external API calls** that transmit policy text off the machine
+- **Never hard-code secrets** — use environment variables if needed
+- **Validate all input** with Pydantic `Field` constraints on the backend
+- **Ollama URL and model** are configurable via `OLLAMA_URL` and `OLLAMA_MODEL` environment variables

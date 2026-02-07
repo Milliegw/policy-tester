@@ -1,7 +1,7 @@
 {
-  "name": "parole-policy-tester",
+  "name": "policy-tester",
   "version": "1.0.0",
-  "description": "AI-powered tool to red-team draft parole policies against lived experience personas (uses local Ollama)",
+  "description": "AI-powered tool to red-team draft government policies and guidelines against lived experience personas (uses local Ollama)",
   "type": "module",
   "scripts": {
     "dev": "vite",
