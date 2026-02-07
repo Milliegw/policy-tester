@@ -94,6 +94,98 @@ PERSONAS = {
             "When multiple barriers intersect (housing, disability, communication), how is 'adequate resettlement plan' fairly assessed?",
         ],
     },
+    "domesticAbuse": {
+    "id": "amara-domestic",
+    "name": "Amara",
+    "category": "Domestic Abuse Survivor",
+    "scenario": (
+        "Amara, 34, reported domestic abuse after 4 years. English is her second language. "
+        "Police attended but perpetrator was not arrested. She was not told about the Victims' Code or her right to support services. "
+        "Three months later, she received a letter saying 'no further action' with no explanation. She fears reporting again because of concerns about immigration status - perpetrator has threatened to have her deported. "
+        "She has since fled to a refuge but has no updates on whether she can safely return to her area."
+    ),
+    "challenges": [
+        "How does the Code ensure victims understand their rights when English is not their first language?",
+        "What explanation must be given when cases are discontinued?",
+        "How are victims with insecure immigration status protected from perpetrator manipulation?",
+        "What ongoing safety information is provided after 'no further action' decisions?"
+    ],
+    "source": "Based on Women's Aid, Refuge, and Victims' Commissioner research on BAME survivors"
+    },
+
+    "sexualViolence": {
+        "id": "kate-sexual-violence",
+        "name": "Kate",
+        "category": "Sexual Violence Survivor",
+        "scenario": (
+            "Kate, now 19, reported sexual assault when she was 15. She was granted special measures as a child, including giving evidence via video link and screens in court. "
+            "Her case was adjourned 3 times. By the time her trial date arrived, she was 18 and some special measures were withdrawn because she was now legally an adult. "
+            "During cross-examination she faced questions about her clothing and alcohol consumption. She was not warned this would happen. She now has PTSD and says she regrets ever reporting."
+        ),
+        "challenges": [
+            "How does the Code protect special measures when delays push child victims into adulthood?",
+            "What information must victims receive about cross-examination practices?",
+            "How are victims prepared for defence tactics including rape myths?",
+            "What mental health support is guaranteed during multi-year waits?"
+        ],
+        "source": "Based on Victim Support 'Suffering for Justice' report (2024) case studies"
+    },
+
+    "disabled": {
+        "id": "marcus-disabled",
+        "name": "Marcus",
+        "category": "Disabled Victim",
+        "scenario": (
+            "Marcus, 42, is Deaf and was assaulted. When police arrived, no BSL interpreter was available. Officers took a written statement but Marcus couldn't fully communicate the details. "
+            "He was not informed of his right to request communication support. The case went to court but the courtroom had no hearing loop and no interpreter was arranged. "
+            "Marcus struggled to follow proceedings. He was not offered a Registered Intermediary despite his communication needs. Afterwards, he wasn't told about the verdict for two weeks."
+        ),
+        "challenges": [
+            "How does the Code ensure communication support is provided from first report onwards?",
+            "What triggers automatic assessment for Registered Intermediary support?",
+            "How are accessible courtroom requirements enforced?",
+            "What timeframes apply to informing disabled victims of case outcomes?"
+        ],
+        "source": "Based on Victims' Commissioner disabled victims literature review and 2023 survey findings"
+    },
+
+    "child": {
+        "id": "jayden-child",
+        "name": "Jayden",
+        "category": "Child Victim (via parent)",
+        "scenario": (
+            "Jayden, 9, witnessed domestic violence against his mother. Police interviewed him at the scene in front of other officers. "
+            "His mother received a leaflet about the Victims' Code but Jayden received nothing age-appropriate explaining what would happen next. "
+            "He has nightmares and stopped attending school. When the case went to court, no one explained to him what a trial was or that he might need to give evidence. "
+            "His mother has tried to access support but was told the waiting list for children's services is 6 months."
+        ),
+        "challenges": [
+            "How should child victims be interviewed to minimise trauma?",
+            "What child-friendly materials must be provided about the justice process?",
+            "How are child victims' views heard without requiring them to give formal evidence?",
+            "What support service waiting times are acceptable for child victims?"
+        ],
+        "source": "Based on Victims' Commissioner and NSPCC research on child victims in CJS"
+    },
+
+    "older": {
+        "id": "dorothy-older",
+        "name": "Dorothy",
+        "category": "Older Victim",
+        "scenario": (
+            "Dorothy, 78, was defrauded of her life savings by a phone scammer. She reported to the police who logged it as Action Fraud. "
+            "Eight months later, she has heard nothing. She doesn't use email and wasn't offered alternative contact methods. She called the police station but couldn't get through. "
+            "She has no smartphone to download the victims' support app. She feels embarrassed about being scammed and hasn't told her family. "
+            "She wasn't referred to any support services or told she could make a Victim Personal Statement."
+        ),
+        "challenges": [
+            "How does the Code ensure updates reach victims who don't use digital communication?",
+            "What proactive referrals to support services should older victims receive?",
+            "How are fraud victims - often older people - kept informed when cases sit with Action Fraud?",
+            "What timeframes for updates apply regardless of crime type?"
+        ],
+        "source": "Based on Victims' Commissioner 2023 survey data on older victims and Older People's Commissioner for Wales research"
+    }
 }
 
 # ============================================================
@@ -142,6 +234,20 @@ EXAMPLE_POLICIES = {
             "from the Parole Board secretariat.\n\n"
             "Prisoners are expected to review their dossier and submit any representations within "
             "21 days of notification."
+        ),
+    },
+    "victims_code": {
+    "title": "Draft Victims' Code: Communication Standards",
+    "text": (
+        "DRAFT POLICY: Victims' Code - Right to Information\n\n"
+        "Victims have the right to receive information about their case.\n\n"
+        "Police must provide an initial update within 5 working days of reporting a crime.\n\n"
+        "If there is no significant development, victims should receive an update at least every 28 days.\n\n"
+        "When a decision is made to discontinue a case, victims must be informed within 5 working days.\n\n"
+        "Victims aged 12 and above may receive direct contact from police and probation alongside their parent or guardian.\n\n"
+        "Information will be provided digitally via the Victim Information Portal unless the victim requests an alternative format.\n\n"
+        "Translation services are available on request.\n\n"
+        "Child victims will be provided with age-appropriate information materials."
         ),
     },
 }
